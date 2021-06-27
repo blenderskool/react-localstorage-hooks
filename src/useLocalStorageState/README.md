@@ -26,6 +26,7 @@ const [state, setState] = useLocalStorageState(key, { initialState, sync: true }
 const [state, setState] = useLocalStorageState(key, { initialState, sync: false });
 ```
 
+This hook accepts:
 - `key` — key for localStorage,
 - `options` object:
   - `initialState` — initial value of the state if there is no value under `key` in localStorage. If some value is there in localStorage under `key`, then that is used. (default: `undefined`)
