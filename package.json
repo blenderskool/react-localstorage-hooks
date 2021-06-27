@@ -1,7 +1,17 @@
 {
   "name": "react-localstorage-hooks",
-  "version": "1.0.0",
-  "description": "A collection of React hooks for localStorage",
+  "version": "0.1.0",
+  "description": "A collection of React hooks for reactively managing localStorage",
+  "keywords": [
+    "react",
+    "reactjs",
+    "localStorage",
+    "hooks",
+    "cross-tab",
+    "sync",
+    "utils",
+    "lib"
+  ],
   "author": "Akash Hamirwasia",
   "license": "MIT",
   "main": "lib/index.js",
