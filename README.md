@@ -5,6 +5,15 @@
   <p>
     A collection of React hooks for reactively managing <code>localStorage</code>.
   </p>
+  <p>
+    <a href="https://www.npmjs.com/package/react-localstorage-hooks">
+      <img src="https://badgen.net/npm/v/react-localstorage-hooks" />
+    </a>
+    <img src="https://badgen.net/bundlephobia/min/react-localstorage-hooks" />
+    <img src="https://badgen.net/bundlephobia/minzip/react-localstorage-hooks?label=gzipped%20size" />
+    <img src="https://badgen.net/npm/types/react-localstorage-hooks" />
+    <img src="https://badgen.net/bundlephobia/tree-shaking/react-localstorage-hooks" />
+  </p>
   <br />
 </div>
 
