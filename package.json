@@ -1,6 +1,6 @@
 {
   "name": "react-localstorage-hooks",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A collection of React hooks for reactively managing localStorage",
   "keywords": [
     "react",
