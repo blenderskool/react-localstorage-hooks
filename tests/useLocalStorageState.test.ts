@@ -1,6 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-
-import useLocalStorageState from '../src/useLocalStorageState/useLocalStorageState';
+import { useLocalStorageState } from '../src';
 
 describe('useLocalStorageState', () => {
   it('keeps localstorage to null if initialState is not set', () => {

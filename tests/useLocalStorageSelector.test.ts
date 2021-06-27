@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import useLocalStorageSelector from '../src/useLocalStorageSelector/useLocalStorageSelector';
+import { useLocalStorageSelector } from '../src';
 
 describe('useLocalStorageSelector', () => {
 
