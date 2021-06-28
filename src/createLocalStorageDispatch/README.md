@@ -40,9 +40,9 @@ function Counter() {
 const dispatch = createLocalStorageDispatch(key, reducer);
 ```
 
-This hook accepts:
+This function accepts:
 - `key` — key for localStorage,
 - `reducer` — reducer function of type `(data, action) => newData`,
 
-This hook returns:
+This function returns:
 - `dispatch` — method to dispatch actions.
