@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { desearlize } from '../utils';
+import { deserialize } from '../utils';
 
 interface useLocalStorageSelectorOptions<U> {
   equalityFn?: (prev: U, next: U) => boolean,
@@ -26,12 +26,12 @@ function useLocalStorageSelector<T, U>(
   };
 
   const [state, setState] = useState<U>(
-    () => typeof window !== 'undefined' ? selector(desearlize<T>(window.localStorage.getItem(key))) : (undefined as unknown as U)
+    () => typeof window !== 'undefined' ? selector(deserialize<T>(window.localStorage.getItem(key))) : (undefined as unknown as U)
   );
 
   const handleStorage = useCallback((event: StorageEvent) => {
     if (event.key !== key) return;
-    const selectedData = selector(desearlize<T>(event.newValue));
+    const selectedData = selector(deserialize<T>(event.newValue));
 
     if (!options.equalityFn(state, selectedData)) {
       setState(selectedData);

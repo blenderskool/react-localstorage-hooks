@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { serialize, desearlize } from '../utils';
+import { serialize, deserialize } from '../utils';
 
 interface useLocalStorageStateOptions<T> {
   initialState?: T,
@@ -21,7 +21,7 @@ function useLocalStorageState<T>(key: string, opts?: useLocalStorageStateOptions
   };
 
   const [state, setState] = useState<T>(
-    () => typeof window !== 'undefined' ? desearlize<T>(window.localStorage.getItem(key)) ?? options.initialState as T : options.initialState as T
+    () => typeof window !== 'undefined' ? deserialize<T>(window.localStorage.getItem(key)) ?? options.initialState as T : options.initialState as T
   );
 
   const setStateWrapper = useCallback((newVal: T | ((prev: T) => T)) => {
@@ -40,8 +40,8 @@ function useLocalStorageState<T>(key: string, opts?: useLocalStorageStateOptions
   }, [key, setState, state]);
 
   const handleStorage = useCallback((event: StorageEvent) => {
-    if (event.key === key && desearlize(event.newValue) !== state) {
-      setState(desearlize(event.newValue) ?? options.initialState as T);
+    if (event.key === key && deserialize(event.newValue) !== state) {
+      setState(deserialize(event.newValue) ?? options.initialState as T);
     }
   }, [state, key, setState]);
 
@@ -57,7 +57,7 @@ function useLocalStorageState<T>(key: string, opts?: useLocalStorageStateOptions
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    const storedData = desearlize(window.localStorage.getItem(key));
+    const storedData = deserialize(window.localStorage.getItem(key));
     if (storedData === null || storedData === undefined) {
       window.localStorage.setItem(key, serialize(options.initialState));
     }
