@@ -36,14 +36,14 @@ function useLocalStorageSelector<T, U>(
     if (!options.equalityFn(state, selectedData)) {
       setState(selectedData);
     }
-  }, [key, setState]);
+  }, [state, key, setState]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
     window.addEventListener('storage', handleStorage);
     return () => window.removeEventListener('storage', handleStorage);
-  }, [key, setState]);
+  }, [key, setState, handleStorage]);
 
   return state;
 }
