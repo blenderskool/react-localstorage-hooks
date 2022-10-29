@@ -125,4 +125,29 @@ describe('useLocalStorageSelector', () => {
 
     expect(result.current).toEqual(data.key2);
   });
+
+  
+  it('passes latest state data to equalityFn', () => {
+    const data = { key1: 'val' };
+    window.localStorage.setItem('selector-test', JSON.stringify(data));
+
+    const selectorFn = jest.fn((selector) => !!selector?.key1);
+    const equalityFn = jest.fn((prev, next) => prev === next);
+    
+    renderHook(() => useLocalStorageSelector('selector-test', selectorFn, { equalityFn }));
+    
+    act(() => {
+      window.localStorage.setItem('selector-test', 'undefined');
+      window.dispatchEvent(new StorageEvent('storage', { key: 'selector-test', newValue: 'undefined' }));
+    });
+
+    expect(equalityFn).lastCalledWith(true, false);
+
+    act(() => {
+      window.localStorage.setItem('selector-test', JSON.stringify(data));
+      window.dispatchEvent(new StorageEvent('storage', { key: 'selector-test', newValue: JSON.stringify(data) }));
+    });
+
+    expect(equalityFn).lastCalledWith(false, true);
+  });
 });
